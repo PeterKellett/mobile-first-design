@@ -1,3 +1,9 @@
+body, html {
+    height: 100%;
+    margin: 0; /*Clean down all the margins so by default, all margins that are children of the body will be set to 0.*/
+    color: rgba(255, 255, 255, 0.8); /*set text color to off white*/
+}
+
 /*set the basic header parameters - added in Styling the Header lesson*/
 .header {
     position: fixed;
@@ -8,20 +14,79 @@
     padding: 15px 25px;
 }
 
+.main {
+    height: 100%;
+}
 
+/*Target the <section> elements - added in Styling the section lesson */
+.section {
+    background-color: blue;
+    height: 100%;
+}
+
+/*
+To center text horizontally, or to center blocks of text, we can use a "margin:0" followed by "auto", but we're going to use a trick here that uses a transformation
+    So let set our article and our aside to "position: relative".
+    We're going to use "top: 50%", so it's 50 percent down from the top.
+    And notice the percentages because we want to maintain that middle section, regardless of the device it's on.
+    We're going to use a translate.
+    And we're going to translate our content to -50%.
+    It'll all center. It's a nice little trick
+*/
+.vcenter {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/*
+And the next thing that we'd like to do is we would like to place our article and our aside content beside each other in the center of the page.
+    So we'd like to separate them into columns.
+*/
+.section-paragraph {
+    font-size: 1em;
+    margin: 25px;
+}
+
+/*Style the Footer*/
+.footer {
+    background-color: grey;
+    padding: 15px;
+}
 
 
 
 /*
-.column {
-    float: left;
-    width: 100%;
-    height: 50px;
-    background-color: black;
-    margin: 10px 0;
+But what we would like to do is position them beside each other at a resolution above 768px.
+And to do this, let's use a media rule.
+We'll apply the two column classes, column-60 and column-40, that we created earlier.
+So let's set the breakpoint to 768px.
+Type @media.
+Use the min-width because this is the mobile first approach as opposed to max-width, which is the desktop first approach.
+Set the column-60 width to 60% of the screen, and column-40 will take up the remaining 40%.
+Go to index.html, and, as we can see, here are the two classes we created earlier.
+*/
+@media (min-width: 768px) {
+    .column-60 {
+        width: 60%;
+    }
+    .column-40 {
+        width: 40%;
+    }
+    /*
+    Now let's target the column class.
+    We want to float those columns to the left.
+    So we set the float property to the left.
+    */
+    .column {
+        float: left;
+        /*width: 100%;
+        height: 50px;
+        background-color: black;
+        margin: 10px 0;*/
+    }
 }
-
-
+/*
 @media (max-width: 991px) {
     .column {
         background-color: green;
@@ -35,4 +100,5 @@
         background-color: red;
         margin: 10px ;
     }
-}*/
+}
+*/
